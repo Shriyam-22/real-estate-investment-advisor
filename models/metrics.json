@@ -1,0 +1,91 @@
+{
+ "classification": {
+  "LogisticRegression": {
+   "accuracy": 0.90522,
+   "f1": 0.9280148253915209,
+   "precision": 0.9220622415406442,
+   "recall": 0.9340447651663405,
+   "roc_auc": 0.9702242815918662
+  },
+  "RandomForest": {
+   "accuracy": 0.97834,
+   "f1": 0.9835237559142566,
+   "precision": 0.9787143851999879,
+   "recall": 0.988380626223092,
+   "roc_auc": 0.9980994712786097
+  },
+  "XGBoost": {
+   "accuracy": 0.99488,
+   "f1": 0.9960892147876566,
+   "precision": 0.9952985712541214,
+   "recall": 0.9968811154598826,
+   "roc_auc": 0.9998947915318364
+  }
+ },
+ "regression": {
+  "LinearRegression": {
+   "rmse": 15.720872253611795,
+   "mae": 11.706062471386923,
+   "r2": 0.9942135472625953,
+   "mape_pct": 7.667005935734844
+  },
+  "RandomForest": {
+   "rmse": 7.220441629444818,
+   "mae": 5.234747713738426,
+   "r2": 0.9987793626468238,
+   "mape_pct": 1.4641443185187375
+  },
+  "XGBoost": {
+   "rmse": 2.097730173402438,
+   "mae": 1.6213564595474244,
+   "r2": 0.9998969712613249,
+   "mape_pct": 0.6245749080685412
+  }
+ },
+ "best_classifier": "XGBoost",
+ "best_regressor": "XGBoost",
+ "clf_importance": {
+  "Public_Transport_Accessibility_Low": 0.15880000591278076,
+  "Security_Flag": 0.08299999684095383,
+  "Transport_Score": 0.06960000097751617,
+  "Amenity_Count": 0.06849999725818634,
+  "Has_Clubhouse": 0.06369999796152115,
+  "BHK": 0.06159999966621399,
+  "PPSF_vs_City": 0.05909999832510948,
+  "Has_Pool": 0.04479999840259552,
+  "Public_Transport_Accessibility_High": 0.04349999874830246,
+  "Ready_Flag": 0.03689999878406525,
+  "Availability_Status_Ready_to_Move": 0.03350000083446503,
+  "Has_Playground": 0.03189999982714653,
+  "Public_Transport_Accessibility_Medium": 0.026799999177455902,
+  "Has_Garden": 0.0215000007301569,
+  "SqFt_per_BHK": 0.020899999886751175,
+  "Has_Gym": 0.01940000057220459,
+  "Availability_Status_Under_Construction": 0.018200000748038292,
+  "Price_per_SqFt": 0.015699999406933784,
+  "Age_of_Property": 0.01489999983459711,
+  "Property_Type_Apartment": 0.013299999758601189
+ },
+ "reg_importance": {
+  "Price_in_Lakhs": 0.7170000076293945,
+  "Public_Transport_Accessibility_Low": 0.06430000066757202,
+  "Price_per_SqFt": 0.05950000137090683,
+  "Transport_Score": 0.03099999949336052,
+  "Public_Transport_Accessibility_High": 0.027000000700354576,
+  "PPSF_vs_City": 0.02539999969303608,
+  "Size_in_SqFt": 0.02019999921321869,
+  "Availability_Status_Ready_to_Move": 0.0142000000923872,
+  "Ready_Flag": 0.00860000029206276,
+  "Age_of_Property": 0.007199999876320362,
+  "Amenity_Count": 0.006399999838322401,
+  "Security_Flag": 0.00419999985024333,
+  "Infrastructure_Score": 0.003800000064074993,
+  "SqFt_per_BHK": 0.0032999999821186066,
+  "Property_Type_Apartment": 0.0024999999441206455,
+  "Availability_Status_Under_Construction": 0.0019000000320374966,
+  "Property_Type_Villa": 0.0017000000225380063,
+  "Public_Transport_Accessibility_Medium": 0.00139999995008111,
+  "BHK": 0.00039999998989515007,
+  "City_Median_PPSF": 0.0
+ }
+}

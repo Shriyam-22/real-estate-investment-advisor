@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+mlruns/
+mlflow.db
+mlartifacts/
+data/india_housing_prices.csv
+.venv/
+.DS_Store
