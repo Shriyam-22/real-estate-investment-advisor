@@ -14,12 +14,9 @@ echo Files changed since last push:
 git status --short
 echo.
 set "MSG="
-if exist commit_message.txt (
-  set /p MSG=<commit_message.txt
-  del commit_message.txt
-) else (
-  set /p MSG=Describe what you changed ^(then press Enter^): 
-)
+if exist commit_message.txt set /p MSG=<commit_message.txt
+if exist commit_message.txt type nul > commit_message.txt
+if not defined MSG set /p MSG=Describe what you changed ^(then press Enter^): 
 if "%MSG%"=="" set "MSG=Update project files"
 git add .
 git commit -m "%MSG%"
