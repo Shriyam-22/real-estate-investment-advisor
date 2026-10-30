@@ -40,6 +40,16 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db     # browse experiments at ht
 ```
 `models/` already contains trained models, so `streamlit run app.py` works straight away.
 
+### 🪟 Run on Windows (double-click)
+| File | What it does |
+|---|---|
+| `run_app.bat` | Installs packages (`requirements-local.txt`) and opens the app at http://localhost:8501 |
+| `open_mlflow.bat` | First run: installs packages and trains all 6 models (~5–8 min). After that: opens the MLflow dashboard at http://localhost:5000 |
+| `fix_warnings.bat` | Updates old Anaconda add-ons (bottleneck, numexpr) that print `_ARRAY_API not found` warnings with NumPy 2 |
+| `push_to_github.bat` | Shows changed files, asks for a commit message, commits and pushes |
+
+The scripts prefer Anaconda's Python (3.11), because very new Python versions (3.15) don't have ready-made Windows packages for MLflow yet. `requirements.txt` keeps exact versions for Streamlit Cloud; `requirements-local.txt` uses looser versions for local machines.
+
 ---
 
 ## 1. Data preprocessing
@@ -87,11 +97,11 @@ Full answers to all 20 questions: [`reports/eda_summary.md`](reports/eda_summary
 |---|---|---|---|---|
 | Linear Regression | 15.72 | 11.71 | 0.9942 | 7.67 % |
 | Random Forest | 7.22 | 5.23 | 0.9988 | 1.46 % |
-| **XGBoost** ✅ | **2.10** | **1.62** | **0.9999** | **0.62 %** |
+| **XGBoost** ✅ | **2.22** | **1.71** | **0.9999** | **0.66 %** |
 
 > **Why are scores so high?** Both targets are deterministic functions of the input features, so a strong model can learn the rules almost perfectly. The useful comparison is *between* models: the linear models can't capture the thresholds and the compounding interaction, and tree boosting can. On real transaction data, expect much lower numbers.
 
-Top drivers (XGBoost classifier): transport access, security, amenity count, clubhouse, BHK, price vs city median.
+Top drivers (XGBoost classifier): security, public transport access, amenity count, BHK, price vs city median.
 
 ## 5. MLflow
 - Two experiments: `RealEstate_GoodInvestment_Classification`, `RealEstate_FuturePrice_Regression`

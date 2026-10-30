@@ -2,14 +2,19 @@
 title Real Estate Investment Advisor
 cd /d "%~dp0"
 
-REM ---- find Python (PATH first, then Anaconda) ----
-set PY=python
-where python >nul 2>nul || set PY="%USERPROFILE%\anaconda3\python.exe"
-%PY% --version || (echo Python not found. Open Anaconda Prompt and run this file from there. & pause & exit /b 1)
+REM ---- pick a Python that has ready-made packages (Anaconda first; avoid 3.15) ----
+set PY=
+if exist "%USERPROFILE%\anaconda3\python.exe" set PY="%USERPROFILE%\anaconda3\python.exe"
+if not defined PY (py -3.13 --version >nul 2>nul && set PY=py -3.13)
+if not defined PY (py -3.12 --version >nul 2>nul && set PY=py -3.12)
+if not defined PY (py -3.11 --version >nul 2>nul && set PY=py -3.11)
+if not defined PY set PY=python
+echo Using Python:
+%PY% --version || (echo Python not found. & pause & exit /b 1)
 
 echo.
 echo === Installing packages (first run takes a few minutes) ===
-%PY% -m pip install -r requirements.txt
+%PY% -m pip install -r requirements-local.txt
 if errorlevel 1 (echo Package install failed - see the error above. & pause & exit /b 1)
 
 echo.

@@ -9,8 +9,20 @@ if not exist .git (
   git config user.name "Shriyam"
   git config user.email "shriyamgopalgupta@gmail.com"
 )
+echo.
+echo Files changed since last push:
+git status --short
+echo.
+set "MSG="
+if exist commit_message.txt (
+  set /p MSG=<commit_message.txt
+  del commit_message.txt
+) else (
+  set /p MSG=Describe what you changed ^(then press Enter^): 
+)
+if "%MSG%"=="" set "MSG=Update project files"
 git add .
-git commit -m "Real Estate Investment Advisor: EDA, XGBoost models, MLflow tracking, Streamlit app"
+git commit -m "%MSG%"
 git remote remove origin 2>nul
 git remote add origin %REPO%
 git push -u origin main
