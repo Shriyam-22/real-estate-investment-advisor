@@ -33,8 +33,17 @@ div[data-testid="stMetricValue"] {{color: {ACCENT};}}
 
 
 # ------------------------------------------------------------------ loaders
+def models_version() -> str:
+    """Fingerprint of the model files, so the cache reloads after a retrain + push."""
+    import hashlib
+    h = hashlib.md5()
+    for f in ["classifier.joblib", "regressor.joblib", "metrics.json"]:
+        h.update((ROOT / "models" / f).read_bytes())
+    return h.hexdigest()
+
+
 @st.cache_resource
-def load_models():
+def load_models(version: str):
     clf = joblib.load(ROOT / "models" / "classifier.joblib")
     reg = joblib.load(ROOT / "models" / "regressor.joblib")
     city_med = json.loads((ROOT / "models" / "city_median_ppsf.json").read_text())
@@ -47,7 +56,7 @@ def load_data():
     return pd.read_parquet(ROOT / "data" / "app_data.parquet")
 
 
-clf, reg, CITY_MED, METRICS = load_models()
+clf, reg, CITY_MED, METRICS = load_models(models_version())
 df = load_data()
 CITY_STATE = df.groupby("City")["State"].first().to_dict()
 
