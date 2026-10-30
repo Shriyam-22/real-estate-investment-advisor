@@ -1,6 +1,8 @@
 # 🏠 Real Estate Investment Advisor
 ### Predicting Property Profitability & Future Value
 
+**🚀 Live app: [shriyam-realestate-advisor.streamlit.app](https://shriyam-realestate-advisor.streamlit.app)**
+
 A machine-learning app that helps investors decide:
 1. **Is this property a Good Investment?** — classification
 2. **What will it be worth in 5 years?** — regression
